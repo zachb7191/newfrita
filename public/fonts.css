@@ -5,6 +5,7 @@
 @font-face {
   font-family: "Neutraface 2 Text";
   src: local("Neutraface 2 Text Book"), local("Neutraface2Text-Book"),
+       url("/fonts/Neutraface2Text-Book.otf") format("opentype"),
        url("/fonts/Neutraface2Text-Book.ttf") format("truetype");
   font-weight: 300 500;
   font-style: normal;

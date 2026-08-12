@@ -131,10 +131,11 @@ const server = http.createServer(async (req, res) => {
       if (p === '/') {
         return send(res, 200, render.landing(content), { 'Content-Type': 'text/html; charset=utf-8' });
       }
-      if (p === '/ann-arbor') {
-        return send(res, 200, render.home(content), { 'Content-Type': 'text/html; charset=utf-8' });
-      }
       const slug = p.slice(1);
+      const loc = (content.locations || []).find((l) => l.slug === slug);
+      if (loc) {
+        return send(res, 200, render.location(content, loc), { 'Content-Type': 'text/html; charset=utf-8' });
+      }
       if (PAGE_SLUGS.includes(slug)) {
         return send(res, 200, render.page(content, slug), { 'Content-Type': 'text/html; charset=utf-8' });
       }

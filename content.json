@@ -37,27 +37,6 @@
       }
     ]
   },
-  "banner": {
-    "enabled": true,
-    "links": [
-      {
-        "text": "Gift cards for Frita Ann Arbor",
-        "linkText": "HERE!",
-        "url": "http://toasttab.com/fritabatidos/giftcards?utmCampaign=onlineOrdering"
-      },
-      {
-        "text": "Takeaway orders for Frita Ann Arbor",
-        "linkText": "HERE!",
-        "url": "https://fritabatidos.com/ann-arbor/650-2/"
-      },
-      {
-        "text": "Catering orders for Frita Ann Arbor",
-        "linkText": "HERE!",
-        "url": "https://www.toasttab.com/catering/fritabatidos"
-      }
-    ],
-    "awards": "Best Burger Michigan Daily Consecutively 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Specialty Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times"
-  },
   "nav": [
     {
       "slug": "food",
@@ -96,18 +75,105 @@
       "title": "Frita Gear"
     }
   ],
-  "pages": {
-    "home": {
-      "heroImages": [
-        "/assets/backgrounds/background_fritas.jpg",
-        "/assets/backgrounds/background_batidos.jpg",
-        "/assets/backgrounds/background_corn.jpg",
-        "/assets/backgrounds/background_frita_special.jpg",
-        "/assets/backgrounds/background_lightbulbs.jpg",
-        "/assets/backgrounds/background_soup.jpg",
-        "/assets/backgrounds/background_eve.jpg"
-      ]
+  "locations": [
+    {
+      "slug": "ann-arbor",
+      "label": "Ann Arbor",
+      "cardImage": "/uploads/location-ann-arbor.png",
+      "bannerEnabled": true,
+      "bannerLinks": [
+        {
+          "text": "Gift cards for Frita Ann Arbor",
+          "linkText": "HERE!",
+          "url": "http://toasttab.com/fritabatidos/giftcards?utmCampaign=onlineOrdering"
+        },
+        {
+          "text": "Takeaway orders for Frita Ann Arbor",
+          "linkText": "HERE!",
+          "url": "https://fritabatidos.com/ann-arbor/650-2/"
+        },
+        {
+          "text": "Catering orders for Frita Ann Arbor",
+          "linkText": "HERE!",
+          "url": "https://www.toasttab.com/catering/fritabatidos"
+        }
+      ],
+      "awards": "Best Burger Michigan Daily Consecutively 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Specialty Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times",
+      "slideshow": {
+        "images": [
+          "/assets/backgrounds/background_batidos.jpg",
+          "/assets/backgrounds/background_eve.jpg",
+          "/assets/backgrounds/background_lightbulbs.jpg"
+        ],
+        "intervalMs": 9000
+      }
     },
+    {
+      "slug": "detroit",
+      "label": "Detroit",
+      "cardImage": "/uploads/location-detroit.png",
+      "bannerEnabled": true,
+      "bannerLinks": [
+        {
+          "text": "Gift cards for Frita Detroit",
+          "linkText": "HERE!",
+          "url": "https://www.toasttab.com/frita-batidos-detroit/giftcards?utm_source=undefined&utm_content=online--frita-batidos-detroit&utm_medium=toast_sites&utm_campaign=giftcards"
+        },
+        {
+          "text": "Takeaway orders for Frita Detroit",
+          "linkText": "HERE!",
+          "url": "http://toasttab.com/frita-batidos-detroit"
+        },
+        {
+          "text": "Catering orders for Frita Detroit",
+          "linkText": "HERE!",
+          "url": "https://www.toasttab.com/catering/frita-batidos-detroit"
+        }
+      ],
+      "awards": "Best Burger Michigan Daily Consecutively 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Specialty Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times",
+      "slideshow": {
+        "images": [
+          "/assets/backgrounds/background_batidos.jpg",
+          "/assets/backgrounds/background_eve.jpg",
+          "/assets/backgrounds/background_lightbulbs.jpg"
+        ],
+        "intervalMs": 9000
+      }
+    },
+    {
+      "slug": "brooklyn",
+      "label": "Brooklyn",
+      "cardImage": "/uploads/location-brooklyn.png",
+      "bannerEnabled": true,
+      "bannerLinks": [],
+      "awards": "Best Burger Michigan Daily Consecutively 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Specialty Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times",
+      "slideshow": {
+        "images": [
+          "/assets/backgrounds/background_batidos.jpg",
+          "/assets/backgrounds/background_eve.jpg",
+          "/assets/backgrounds/background_lightbulbs.jpg"
+        ],
+        "intervalMs": 9000
+      }
+    },
+    {
+      "slug": "dallas",
+      "label": "Dallas",
+      "cardImage": "/uploads/location-dallas.png",
+      "bannerEnabled": true,
+      "bannerLinks": [],
+      "awards": "Best Burger Michigan Daily Consecutively 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Specialty Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times",
+      "slideshow": {
+        "images": [
+          "/assets/backgrounds/background_batidos.jpg",
+          "/assets/backgrounds/background_eve.jpg",
+          "/assets/backgrounds/background_lightbulbs.jpg"
+        ],
+        "intervalMs": 9000
+      }
+    }
+  ],
+  "pages": {
     "food": {
       "orderText": "ORDER ONLINE HERE!",
       "orderUrl": "https://order.toasttab.com/online/fritabatidos",
@@ -717,59 +783,6 @@
       "/assets/landing/IMG_1497-1.jpg",
       "/assets/landing/IMG_7968-3.jpg"
     ],
-    "bannerRows": [
-      [
-        {
-          "text": "Gift cards for Frita Ann Arbor",
-          "linkText": "HERE!",
-          "url": "http://toasttab.com/fritabatidos/giftcards?utmCampaign=onlineOrdering"
-        },
-        {
-          "text": "Takeaway orders for Frita Ann Arbor",
-          "linkText": "HERE!",
-          "url": "https://fritabatidos.com/ann-arbor/650-2/"
-        },
-        {
-          "text": "Catering orders for Frita Ann Arbor",
-          "linkText": "HERE!",
-          "url": "https://www.toasttab.com/catering/fritabatidos"
-        }
-      ],
-      [
-        {
-          "text": "Gift cards for Frita Detroit",
-          "linkText": "HERE!",
-          "url": "https://www.toasttab.com/frita-batidos-detroit/giftcards?utm_source=undefined&utm_content=online--frita-batidos-detroit&utm_medium=toast_sites&utm_campaign=giftcards"
-        },
-        {
-          "text": "Takeaway orders for Frita Detroit",
-          "linkText": "HERE!",
-          "url": "http://toasttab.com/frita-batidos-detroit"
-        },
-        {
-          "text": "Catering orders for Frita Detroit",
-          "linkText": "HERE!",
-          "url": "https://www.toasttab.com/catering/frita-batidos-detroit"
-        }
-      ]
-    ],
-    "awards": "Best Burger Michigan Daily 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Speciality Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times",
-    "locations": [
-      {
-        "label": "Ann Arbor",
-        "image": "/uploads/location-ann-arbor.png",
-        "url": "/ann-arbor"
-      },
-      {
-        "label": "Detroit",
-        "image": "/uploads/location-detroit.png",
-        "url": "http://fritabatidos.com/detroit"
-      },
-      {
-        "label": "Brooklyn",
-        "image": "/uploads/location-brooklyn.png",
-        "url": "https://fritabk.com/"
-      }
-    ]
+    "awards": "Best Burger Michigan Daily 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Speciality Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times"
   }
 }

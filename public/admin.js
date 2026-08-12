@@ -2,7 +2,8 @@
 
 let state = null;
 let dirty = false;
-let activePanel = 'banner';
+let activePanel = 'locations';
+let activeLocation = 0; // which location the Locations panel is editing
 const openCards = new Set(); // remembers which collapsible cards are expanded
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -46,6 +47,7 @@ const ICONS = {
   checkCircle: svg('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>'),
   alert: svg('<circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>'),
   globe: svg('<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/>'),
+  mapPin: svg('<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>'),
 };
 
 // ---------- path helpers ----------
@@ -466,8 +468,134 @@ function foodSectionFields(prefix, sec) {
 
 // ---------- panels ----------
 
+// The row of tabs at the top of the Locations panel.
+function locationSwitcher() {
+  const locs = state.locations || [];
+  const tabs = locs.map((l, i) =>
+    el(
+      'button',
+      {
+        type: 'button',
+        class: 'loc-tab' + (i === activeLocation ? ' active' : ''),
+        onclick: () => {
+          if (i === activeLocation) return;
+          activeLocation = i;
+          openCards.clear(); // card keys are per-location, so don't carry them over
+          renderPanel();
+          $('.panel-scroll').scrollTop = 0;
+        },
+      },
+      [l.label || `Location ${i + 1}`]
+    )
+  );
+  tabs.push(
+    el(
+      'button',
+      {
+        type: 'button',
+        class: 'loc-tab loc-add',
+        title: 'Add a location',
+        onclick: () => {
+          locs.push({
+            slug: '',
+            label: 'New location',
+            cardImage: '',
+            bannerEnabled: true,
+            bannerLinks: [],
+            awards: '',
+            slideshow: { images: [], intervalMs: 9000 },
+          });
+          state.locations = locs;
+          activeLocation = locs.length - 1;
+          openCards.clear();
+          markDirty();
+          renderPanel();
+          $('.panel-scroll').scrollTop = 0;
+        },
+      },
+      ['+ Add']
+    )
+  );
+  return el('div', { class: 'loc-switch' }, tabs);
+}
+
+// Removing the last location would leave the front page with nothing to link to.
+function removeLocationBtn() {
+  const locs = state.locations || [];
+  if (locs.length < 2) return note('This is the only location — add another before removing this one.');
+  const loc = locs[activeLocation];
+  return el('div', { class: 'loc-danger' }, [
+    el(
+      'button',
+      {
+        type: 'button',
+        class: 'loc-remove',
+        onclick: () => {
+          if (!confirm(`Remove ${loc.label || 'this location'}? Its page and front-page lockup will disappear.`)) return;
+          locs.splice(activeLocation, 1);
+          activeLocation = Math.max(0, activeLocation - 1);
+          openCards.clear();
+          markDirty();
+          renderPanel();
+        },
+      },
+      [`Remove ${loc.label || 'this location'}`]
+    ),
+  ]);
+}
+
+function currentLocation() {
+  const locs = state.locations || [];
+  if (!locs.length) return null;
+  activeLocation = Math.min(activeLocation, locs.length - 1);
+  return locs[activeLocation];
+}
+
 const PANELS = [
   { group: 'Site' },
+  {
+    id: 'locations',
+    title: 'Locations',
+    desc: 'Each location’s front page — slideshow, banner and lockup',
+    icon: 'mapPin',
+    preview: () => {
+      const loc = currentLocation();
+      return loc ? `/${loc.slug}` : '/';
+    },
+    render: () => {
+      const loc = currentLocation();
+      if (!loc) return [note('No locations yet — add one to content.json to get started.')];
+      const p = `locations.${activeLocation}`;
+      return [
+        note('Pick a location to edit its front page. The front page selector’s lockups and banner rows are built from this list, so each location is only edited here.'),
+        locationSwitcher(),
+        subtitle('Background slideshow'),
+        note('These photos fill the location’s front page and slowly crossfade, in this order.'),
+        fNumber('Milliseconds each photo shows before fading', `${p}.slideshow.intervalMs`, '9000 = 9 seconds. The crossfade itself is slow and automatic.'),
+        fImageList(`${p}.slideshow.images`, 'Add photo'),
+        subtitle('Announcement banner'),
+        fCheck('Show the banner', `${p}.bannerEnabled`),
+        fList(`${p}.bannerLinks`, {
+          itemTitle: (l) => l.text || 'Link',
+          sub: (l) => l.linkText,
+          fields: (pp) => [
+            fText('Text before the link', `${pp}.text`),
+            el('div', { class: 'grid-2' }, [fText('Link text', `${pp}.linkText`), fText('Link URL', `${pp}.url`)]),
+          ],
+          newItem: () => ({ text: '', linkText: 'HERE!', url: '' }),
+          addLabel: 'Add banner link',
+        }),
+        fTextarea('Awards line', `${p}.awards`, 3, 'Separate awards with a • character'),
+        subtitle('Front page lockup'),
+        el('div', { class: 'grid-2' }, [
+          fText('Location name', `${p}.label`),
+          fText('URL path', `${p}.slug`, 'ann-arbor makes this page live at /ann-arbor'),
+        ]),
+        fImage('Lockup image', `${p}.cardImage`),
+        removeLocationBtn(),
+      ];
+    },
+  },
   {
     id: 'landing',
     title: 'Front Page',
@@ -475,63 +603,10 @@ const PANELS = [
     icon: 'globe',
     preview: '/',
     render: () => [
-      note('The front page lets visitors pick their Frita Batidos location — the flower lockups link to each location\'s site. Ann Arbor points to this site\'s homepage.'),
-      subtitle('Locations'),
-      fList('landing.locations', {
-        itemTitle: (l) => l.label || 'Location',
-        fields: (p) => [
-          el('div', { class: 'grid-2' }, [
-            fText('Location name', `${p}.label`),
-            fText('Links to', `${p}.url`, 'Use /ann-arbor for this site, or a full https:// URL'),
-          ]),
-          fImage('Lockup image', `${p}.image`),
-        ],
-        newItem: () => ({ label: '', image: '', url: '' }),
-        addLabel: 'Add location',
-      }),
-      subtitle('Banner link rows'),
-      fList('landing.bannerRows', {
-        itemTitle: (row, i) => (row && row[0] && row[0].text) || `Row ${i + 1}`,
-        fields: (p) => [
-          fList(p, {
-            flat: true,
-            itemTitle: (k) => k.text || 'Link',
-            fields: (pp) => [
-              fText('Text before the link', `${pp}.text`),
-              el('div', { class: 'grid-2' }, [fText('Link text', `${pp}.linkText`), fText('Link URL', `${pp}.url`)]),
-            ],
-            newItem: () => ({ text: '', linkText: 'HERE!', url: '' }),
-            addLabel: 'Add link to this row',
-          }),
-        ],
-        newItem: () => [],
-        addLabel: 'Add banner row',
-      }),
+      note('The front page lets visitors pick their location. The lockups and banner link rows come from the Locations section — edit them there.'),
       fTextarea('Awards line', 'landing.awards', 3, 'Separate awards with a • character'),
       subtitle('Background photos (slow fade)'),
       fImageList('landing.backgroundImages', 'Add photo'),
-    ],
-  },
-  {
-    id: 'banner',
-    title: 'Top Banner',
-    desc: 'The announcement bar on the Ann Arbor homepage',
-    icon: 'megaphone',
-    preview: '/ann-arbor',
-    render: () => [
-      fCheck('Show the banner', 'banner.enabled'),
-      subtitle('Banner links'),
-      fList('banner.links', {
-        itemTitle: (l) => l.text || 'Link',
-        sub: (l) => l.linkText,
-        fields: (p) => [
-          fText('Text before the link', `${p}.text`),
-          el('div', { class: 'grid-2' }, [fText('Link text', `${p}.linkText`), fText('Link URL', `${p}.url`)]),
-        ],
-        newItem: () => ({ text: '', linkText: 'HERE!', url: '' }),
-        addLabel: 'Add banner link',
-      }),
-      fTextarea('Awards line', 'banner.awards', 3, 'Separate awards with a • character'),
     ],
   },
   {
@@ -586,17 +661,6 @@ const PANELS = [
     ],
   },
   { group: 'Pages' },
-  {
-    id: 'home',
-    title: 'Home (Ann Arbor)',
-    desc: 'The rotating full-screen background photos',
-    icon: 'home',
-    preview: '/ann-arbor',
-    render: () => [
-      note('These photos fill the homepage and slowly fade from one to the next, in this order.'),
-      fImageList('pages.home.heroImages', 'Add photo'),
-    ],
-  },
   {
     id: 'food-page',
     title: 'Food & Drinks',
@@ -882,12 +946,19 @@ function closeDrawer() {
 
 // ---------- panel rendering ----------
 
+// A panel's `preview` may be a path or a function, so it can follow the
+// location being edited.
+function panelPreview(panel) {
+  if (!panel) return '/';
+  return (typeof panel.preview === 'function' ? panel.preview() : panel.preview) || '/';
+}
+
 function renderPanel() {
   const panel = PANELS.find((p) => p.id === activePanel);
   if (!panel) return;
   $('#panel-title').textContent = panel.title;
   $('#panel-desc').textContent = panel.desc || '';
-  $('#preview-link').href = panel.preview || '/';
+  $('#preview-link').href = panelPreview(panel);
   const body = $('#panel-body');
   body.innerHTML = '';
   for (const node of panel.render()) body.appendChild(node);
@@ -916,7 +987,7 @@ function syncPreviewSrc(force) {
   if (!previewState.on) return;
   const panel = PANELS.find((p) => p.id === activePanel);
   const frame = $('#preview-frame');
-  const target = (panel && panel.preview) || '/';
+  const target = panelPreview(panel);
   const current = frame.getAttribute('data-path');
   if (force || current !== target) {
     frame.setAttribute('data-path', target);
