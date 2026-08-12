@@ -1,0 +1,775 @@
+{
+  "site": {
+    "title": "Frita Batidos | ¡Cuban Inspired Street Food!",
+    "name": "FRITA BATIDOS",
+    "tagline": "¡Cuban Inspired Street Food!",
+    "orderOnlineUrl": "https://order.toasttab.com/online/fritabatidos",
+    "social": [
+      {
+        "id": "email",
+        "label": "Email",
+        "url": "mailto:frita@fritabatidos.com",
+        "icon": "email"
+      },
+      {
+        "id": "instagram",
+        "label": "Instagram",
+        "url": "https://instagram.com/fritabatidos",
+        "icon": "instagram"
+      },
+      {
+        "id": "facebook",
+        "label": "Facebook",
+        "url": "https://www.facebook.com/fritabatidos",
+        "icon": "facebook"
+      },
+      {
+        "id": "google",
+        "label": "Google",
+        "url": "https://plus.google.com/101698039452473068244/about?gl=US&hl=en-US",
+        "icon": "google_plus"
+      },
+      {
+        "id": "yelp",
+        "label": "Yelp",
+        "url": "http://www.yelp.com/biz/frita-batidos-ann-arbor",
+        "icon": "yelp"
+      }
+    ]
+  },
+  "banner": {
+    "enabled": true,
+    "links": [
+      {
+        "text": "Gift cards for Frita Ann Arbor",
+        "linkText": "HERE!",
+        "url": "http://toasttab.com/fritabatidos/giftcards?utmCampaign=onlineOrdering"
+      },
+      {
+        "text": "Takeaway orders for Frita Ann Arbor",
+        "linkText": "HERE!",
+        "url": "https://fritabatidos.com/ann-arbor/650-2/"
+      },
+      {
+        "text": "Catering orders for Frita Ann Arbor",
+        "linkText": "HERE!",
+        "url": "https://www.toasttab.com/catering/fritabatidos"
+      }
+    ],
+    "awards": "Best Burger Michigan Daily Consecutively 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Specialty Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times"
+  },
+  "nav": [
+    {
+      "slug": "food",
+      "title": "Food & Drinks"
+    },
+    {
+      "slug": "menu-guide",
+      "title": "Menu Guide"
+    },
+    {
+      "slug": "catering",
+      "title": "Catering"
+    },
+    {
+      "slug": "chef",
+      "title": "Chef"
+    },
+    {
+      "slug": "philosophy",
+      "title": "Philosophy"
+    },
+    {
+      "slug": "photos",
+      "title": "Photos"
+    },
+    {
+      "slug": "praise",
+      "title": "Press/Praise"
+    },
+    {
+      "slug": "contact",
+      "title": "Contact"
+    },
+    {
+      "slug": "frita-gear",
+      "title": "Frita Gear"
+    }
+  ],
+  "pages": {
+    "home": {
+      "heroImages": [
+        "/assets/backgrounds/background_fritas.jpg",
+        "/assets/backgrounds/background_batidos.jpg",
+        "/assets/backgrounds/background_corn.jpg",
+        "/assets/backgrounds/background_frita_special.jpg",
+        "/assets/backgrounds/background_lightbulbs.jpg",
+        "/assets/backgrounds/background_soup.jpg",
+        "/assets/backgrounds/background_eve.jpg"
+      ]
+    },
+    "food": {
+      "orderText": "ORDER ONLINE HERE!",
+      "orderUrl": "https://order.toasttab.com/online/fritabatidos",
+      "intro": "We strive to source our meat, cheese and produce from Michigan or the Midwest whenever possible. This is an ongoing quest and something personally meaningful to us, so if you have a favorite local, humane farm or purveyor, please point us in their direction. It will be greatly appreciated! All of our chicken and beef is certified Halal! Please come visit us to learn about our seasonal specials!"
+    },
+    "menuGuide": {
+      "title": "FRITA BATIDOS MENU GUIDE",
+      "intro": "We strive to source our meat, cheese and produce from Michigan or the Mid-West whenever possible. This is an ongoing quest and something personally meaningful to us, so if you have a favorite local, humane farm or purveyor, please point us in their direction. It will be greatly appreciated!",
+      "columns": [
+        {
+          "heading": "VEGETARIAN",
+          "items": "Black Bean Frita\nCilantro-Lime Salsa\nAvocado Spread\nBatidos\nCrisped Plantains\nTwice Fried Ripe Plantains\nLoaded Plantains\nShoestring Fries\nGarlic-Cilantro Fries\nCoconut-Ginger Rice\nTropical Slaw\n'The Best Snack Ever'\nTropical Salad\n'Light, Bright Salad'\nChurros\nCinnamon Sugar Plantains",
+          "note": ""
+        },
+        {
+          "heading": "VEGAN",
+          "items": "Cilantro-Lime Salsa\nAvocado Spread\nCrisped Plantains\nLoaded Plantains (no crème fraîche, no cheese)\nShoestring Fries (no mayo)\nGarlic-Cilantro Fries (upon request)\nSlow Cooked Black Beans\nCoconut-Ginger Rice (upon request)\nVeggie Picadillo Bowl\nBlack Beans & Seared Tofu Bowl\nTropical Slaw (no mayo)\nTropical Salad (with or w/o Tofu)\n'Light Bright Salad' (no cheese)\nSpiced & Seared Local, Organic Tofu\nCinnamon Sugar Plantains",
+          "note": "Please note...All plantains and Fries may be fried in a dedicated vegan fryer by request"
+        },
+        {
+          "heading": "NO DAIRY",
+          "items": "Same list as above PLUS\nBeef Frita lighter\nChorizo Frita lighter\nAromatic Pulled Pork Bowl\n(over black beans or simple salad)\nChicken Verde Bowl\n(over black beans or simple salad)\nVeggie Picadillo Bowl\n(over black beans or simple salad)",
+          "note": ""
+        },
+        {
+          "heading": "LIGHTER",
+          "items": "'The Lighter Batido'\nCilantro-Lime Salsa\nSlow Cooked Black Beans\nTropical Salad\nAromatic Pulled Pork Bowl\nChicken Verde Bowl",
+          "note": "Please note...Fish Frita, Chicken Frita and Black Bean Frita are all lighter but do contain binding ingredients which are not as light.  Fish Frita (bread crumbs), Black Bean Frita (cheese and bread crumbs), Chicken Frita (egg and bread crumbs)"
+        },
+        {
+          "heading": "NO SOY",
+          "items": "Beef, Chorizo, Chicken and Black Bean Patties\nCilantro-Lime Salsa\nAvocado Spread\nBatidos\nSlow Cooked Black Beans\nCoconut-Ginger Rice\n'The Best Snack Ever'\nTropical Salad\n'Light Bright Salad'\nChicken Verde Bowl\nVeggie Picadillo Bowl\nBrioche\nCuban Bread",
+          "note": ""
+        },
+        {
+          "heading": "GLUTEN FREE",
+          "items": "Beef Frita lighter (on Romaine)\nChorizo Frita lighter (on Romaine)\nCilantro Lime Salsa\nAvocado Spread\nBatidos (except The Batido de Trigo)\nCrisped Plantains (upon request)\nTwice Fried Plantains (upon request)\nLoaded Plantains (upon request)\nShoestring Fries (upon request)\nGarlic-Cilantro Fries (upon request)\nSlow Cooked Black Beans\nCoconut-Ginger Rice\nTropical Slaw\n'Best Snack Ever'\nTropical Salad\nChicken Verde Bowl\nVeggie Picadillo Bowl\nCinnamon Suger Plantains",
+          "note": "Please note...Ingredients may contain or have come in contact with gluten without our knowledge prior to arrival at Frita Batidos. (cheese on 'BSE' contains whey)\nMay be prepared in a gluten free fryer upon request"
+        },
+        {
+          "heading": "DELICATE FLAVOR PROFILE",
+          "items": "Tropical Salad\nBeef Frita\nFish Frita\nShoestring Fries\nTropical Slaw\nCinnamon and Sugar Plantains\nChurros\nBatidos",
+          "note": ""
+        },
+        {
+          "heading": "NUTS / SESAME",
+          "items": "Tropical Salad (contains toasted macadamia nuts, sunflower seeds, pumpkin seeds)\nAromatic Pulled Pork (Hoisen sauce in marinade contains gluten and sesame)",
+          "note": ""
+        },
+        {
+          "heading": "NO GARLIC",
+          "items": "Beef Frita, (w/o sweet chile mayo)\nBatidos\nShoestring Fries, (w/o sweet chile mayo)\nTropical Salad\nChurros\nCinnamon Sugar Plantains",
+          "note": ""
+        }
+      ],
+      "footer": "117 WEST WASHINGTON ST.   ANN ARBOR, MI   48104   PH 734.761.2882   WWW.FRITABATIDOS.COM"
+    },
+    "catering": {
+      "linkText": "Click here to read about our guests catering experiences!",
+      "linkUrl": "https://fritabatidos.com/ann-arbor/catering/catering-references-2/",
+      "images": [
+        "/uploads/catering-1.png",
+        "/uploads/catering-2.png",
+        "/uploads/catering-3.png"
+      ]
+    },
+    "chef": {
+      "sections": [
+        {
+          "heading": "BACKGROUND",
+          "body": "Eve Aronoff is the Chef/Owner of Frita Batidos.  She has worked in the culinary industry for over 25 years – from prep cook, to line cook to sous chef, Chef de Cuisine to Executive Chef – honing her skills, studying different cultures and developing her own distinct style of cooking.  After many years working hands-on in the restaurant industry, Eve had the opportunity to attend Le Cordon Bleu in Paris where she earned diplomas in French Cuisine and Wine and Spirits."
+        },
+        {
+          "heading": "STYLE",
+          "body": "Eve's style combines the Philosophy of Classical French Cuisine with a love for big flavors, bold spices, texture and contrast.  With culinary influences from West African to North African, Cuban to Vietnamese, Eve has always followed her intuition to bring her to what goes together, rather than convention or a desire to do something different for its own sake."
+        },
+        {
+          "heading": "INFLUENCES",
+          "body": "Eve grew up spending time in Miami, with her Grandmother, and the Cuban, and more broadly, Latino cultures became a major influence in her style of cooking.  Her love for the ingredients, culinary traditions and spirit of the culture grew as she spent years working alongside people from these communities.  Excited by the melting pot aspect of Cuban culture and cuisine with significant migrant communities including Chinese, Spanish, Creole and African – Eve, always savoring the opportunity to learn about diverse cultures, took that knowledge as a starting point to see where her imagination would take it from there!"
+        },
+        {
+          "heading": "VISION",
+          "body": "In creating Frita Batidos, Eve followed her dream of honing in on the Cuban and Latin American influences, which have been integral to her style of cooking.  The Frita and the Batido, two dishes from Cuban street food culture which Eve had fallen in love with, are the starting points for her whimsical menu at Frita Batidos – The Frita, a delicious burger made of chorizo with shoestring fries on top in a soft, egg bun – and the Batido, a tropical milkshake made with fresh fruit, crushed ice and sweetened milk.  While the idea of these dishes derive from classical Cuban cooking, Eve's whimsical interpretations are all her own.  These unique interpretations of the Frita and Batido are just the starting point for the bold, lush flavors expressed in each dish.\n\nFrita Batidos is the juxtaposition of Eve's two greatest passions – The desire to create something truly special through the merging of the highest standards and attention to detail  with the warmth and conviviality of feeding the people you love.  Eve dreamt of creating something truly special grounded in her core beliefs – Making food from scratch, following the seasons and supporting local farmers, purveyors and community – and bringing these elements together to create something with her unique fingerprint and uniquely its own in Frita Batidos.\n\nOpen for two years, Frita Batidos has received accolades from both local and national press and food blogs – including The New York Times and The Chicago Tribune – and has drawn personal visits from some of the foremost chefs and food aficionados in the country.  Eve and all of us at Frita Batidos are excited to continue learning and growing and making Frita Batidos truly special!"
+        },
+        {
+          "heading": "HIGHLIGHTS",
+          "body": "Over the years in the culinary industry, some of Eve's proudest moments include-\n\nEarned Diplomas in French Cuisine and Wine and Spirits from Le Cordon Bleu in Paris, France\n\nTravelled to The James Beard Foundation in New York to create a multi-course seasonal dinner – A coveted honor amongst the most celebrated chefs in the country\n\nSent as a delegate of The Slow Food Movement to Torino, Italy to attend Terra Madre, the bi-annual conference of the International Slow Food community\n\nOpened and operated eve – a nationally renowned independent restaurant which received glowing praise from the likes of Chefs Mario Batali and Alice Waters\n\nPublished her cookbook, eve – Contemporary Cuisine – Methode Traditionelle, which guides the reader course by course through a dinner at eve and shares the repertoire of Eve's celebrated seasonal recipes.  Numerous Le Cordon Bleu schools have since used eve Contemporary Cuisine – Methode Traditionelle as a textbook for their Contemporary cooking course.\n\nRecently appointed to the Board of Directors of the Michigan Restaurant Association – An exciting opportunity for Eve to contribute her time, passion and knowledge to foster excellence in the culinary community.\n\nOpened Frita Batidos – her Vision of over 10 years and hybrid of her favorite elements of her informal and formal culinary training and background – Combining the warmth and conviviality of the most casual environment with the passion and attention to detail of a formal restaurant to create something uniquely its own in Frita Batidos.\n\nFrita Batidos awarded a 2012 American Institute of Architects Honor Award for outstanding design\n\nEve included in the 2013 Compendium of Best Chefs America"
+        }
+      ]
+    },
+    "philosophy": {
+      "sections": [
+        {
+          "heading": "",
+          "body": "FRITA BATIDOS is inspired by Cuban culture and a fantasy revolving around two staples in the world of Cuban street food – The FRITA – a burger traditionally made from spicy chorizo served with shoestring fries on top in a soft egg bun and BATIDOS – tropical milkshakes made with fresh fruit, crushed ice, and sweetened milk – with or without rum! Like burgers and shakes, Fritas and Batidos are a natural pairing and the whimsical menu is the result of dreaming about these two dishes for years! Frita Batidos is chef-driven, following the tenets of the Slow Food Movement with almost everything being made in our kitchen, from scratch and inspired by the time I spent visiting Miami throughout my childhood."
+        },
+        {
+          "heading": "",
+          "body": "CUBAN? NO, I am not Cuban – and this is not a Traditional Cuban restaurant. I grew up spending a lot of time visiting my Grandmother in Miami, and the Cuban and more broadly Latino cultures became a major influence in my style of cooking. My love for the ingredients, culinary traditions and spirit of the culture grew as I spent years working alongside people from these communities. I was excited by the melting pot aspect of Cuban culture and cuisine with significant migrant communities including Chinese, Spanish, Creole and so… while the starting point may be Cuban, the style of the menu is all its own!"
+        },
+        {
+          "heading": "",
+          "body": "OUR menu follows the seasons and many of the key ingredients are sourced from local farmers and purveyors. This is an ongoing quest and something personally meaningful to us, so if you have a favorite local, humane farm or purveyor, please point us in their direction – It will be greatly appreciated!"
+        },
+        {
+          "heading": "",
+          "body": "Frita Batidos is the juxtaposition of Eve's two greatest passions – The desire to create something truly special through the merging of the highest standards and attention to detail with the warmth and conviviality of feeding the people you love. Eve dreamt of creating something truly special grounded in her core beliefs – Making food from scratch, following the seasons and supporting local farmers, purveyors and community – and bringing these elements together to create something with her unique fingerprint and uniquely its own in Frita Batidos."
+        },
+        {
+          "heading": "",
+          "body": "Frita Batidos is a community. We thank you – friends, family, partners, extended restaurant family and voracious culinary community – for helping bring to fruition what started as a day dream, grew into an obsession and is finally a reality!"
+        }
+      ]
+    },
+    "photos": {
+      "images": [
+        "/assets/backgrounds/background_eve.jpg",
+        "/assets/backgrounds/background_fritas.jpg",
+        "/assets/backgrounds/background_batidos.jpg",
+        "/assets/backgrounds/background_corn.jpg",
+        "/assets/backgrounds/background_frita_special.jpg",
+        "/assets/backgrounds/background_lightbulbs.jpg",
+        "/assets/backgrounds/background_soup.jpg"
+      ],
+      "autoplay": true,
+      "intervalMs": 7000
+    },
+    "praise": {
+      "images": [
+        "/uploads/press-1.png",
+        "/uploads/press-2.png",
+        "/uploads/press-3.png",
+        "/uploads/press-4.png",
+        "/uploads/press-5.png"
+      ]
+    },
+    "contact": {
+      "notice": "We will be closing at 3PM on Christmas Eve and Closed on Christmas Day!\nHave a happy holiday!",
+      "hours": [
+        {
+          "days": "Sunday – Thursday",
+          "time": "11am – 11pm"
+        },
+        {
+          "days": "Friday – Saturday",
+          "time": "11am – 12am"
+        }
+      ],
+      "addressLines": "117 W. Washington\nAnn Arbor, MI 48104",
+      "mapUrl": "https://maps.google.com/maps?ie=UTF8&f=d&daddr=Frita+Batidos,+117+W+Washington+St,+Ann+Arbor,+MI+48104&geocode=CUr07eTN2e_3FeIlhQId8RUC-yGN6a0Oepm3hQ&gl=US&hl=en-US",
+      "links": [
+        {
+          "label": "Phone",
+          "url": "tel:+17347612882"
+        },
+        {
+          "label": "Email",
+          "url": "mailto:frita@fritabatidos.com"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/fritabatidos/?hl=en"
+        },
+        {
+          "label": "Facebook",
+          "url": "http://www.facebook.com/FritaBatidos"
+        },
+        {
+          "label": "Google",
+          "url": "https://plus.google.com/101698039452473068244/about?gl=US&hl=en-US"
+        },
+        {
+          "label": "Yelp",
+          "url": "http://www.yelp.com/biz/frita-batidos-ann-arbor"
+        }
+      ]
+    },
+    "fritaGear": {
+      "buttonText": "FRITA GEAR!",
+      "url": "https://order.toasttab.com/online/fritabatidos"
+    }
+  },
+  "menus": {
+    "food": {
+      "sections": [
+        {
+          "kind": "picker",
+          "number": "1",
+          "title": "PICK YOUR FRITA!",
+          "intro": "Inspired by traditional Cuban burgers... We make ours with shoestring fries on top, served on a soft egg bun. Try any or all of our interpretations below!",
+          "priceLine": "11/single  15/double",
+          "variants": [
+            {
+              "name": "CHORIZO",
+              "desc": "w/sweet chile mayo"
+            },
+            {
+              "name": "BLACK BEAN",
+              "desc": "w/chipotle mayo"
+            },
+            {
+              "name": "CHICKEN",
+              "desc": "w/lemon-scented mayo"
+            },
+            {
+              "name": "FISH",
+              "desc": "w/lemon-scented mayo"
+            },
+            {
+              "name": "BEEF*",
+              "desc": "w/sweet chile mayo"
+            }
+          ],
+          "extraTitle": "ON TOP",
+          "extraPrice": "+1.5/ea",
+          "extraLines": "MUENSTER | CILANTRO-LIME SALSA | TROPICAL SLAW | FRESH JALAPEÑO (1)\nAVOCADO SPREAD (2.25) | THICK-CUT BACON (2.25) | SUNNY SIDE UP EGG* (MP)",
+          "highlight": "",
+          "boxes": [
+            {
+              "title": "MAKE IT LOCO*",
+              "desc": "everything but bacon & jalapeños",
+              "price": "+5.5"
+            },
+            {
+              "title": "MAKE IT LIGHTER",
+              "desc": "on romaine, no mayo, no fries",
+              "price": "NC"
+            }
+          ]
+        },
+        {
+          "kind": "picker",
+          "number": "2",
+          "title": "PICK YOUR BATIDO!",
+          "intro": "Inspired by traditional Cuban tropical milkshakes...We make ours with Guernsey dairy vanilla bean ice cream, fresh fruit and other lush, seasonal ingredients!",
+          "priceLine": "",
+          "variants": [],
+          "extraTitle": "",
+          "extraPrice": "",
+          "extraLines": "COCONUT CREAM | FRESH LIME | HIBISCUS | PASSION FRUIT (6)\nCAJETA (7.5) | CHOCOLATE ESPAÑOL (7.5) | 'THE LIGHTER BATIDO' (7.5)",
+          "highlight": "Add a splash of dark rum to any batido! +2.5",
+          "boxes": []
+        },
+        {
+          "kind": "items",
+          "number": "3",
+          "title": "PICK YOUR SIDES!",
+          "columns": 2,
+          "boxed": true,
+          "items": [
+            {
+              "name": "CRISPED PLANTAINS",
+              "desc": "w/cilantro-lime salsa OR avocado spread",
+              "price": "6.5",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "TWICE FRIED RIPE PLANTAINS",
+              "desc": "",
+              "price": "6.5",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "LOADED PLANTAINS",
+              "desc": "w/black beans, Muenster, cilantro-lime salsa, avocado spread & crème fraîche",
+              "price": "7.5",
+              "price2": "12",
+              "kind": "item"
+            },
+            {
+              "name": "SHOESTRING FRIES",
+              "desc": "",
+              "price": "4",
+              "price2": "5.5",
+              "kind": "item"
+            },
+            {
+              "name": "GARLIC-CILANTRO FRIES",
+              "desc": "",
+              "price": "5",
+              "price2": "6.5",
+              "kind": "item"
+            },
+            {
+              "name": "BLACK BEANS",
+              "desc": "",
+              "price": "5",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "COCONUT-GINGER RICE",
+              "desc": "",
+              "price": "5",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "TROPICAL SLAW",
+              "desc": "",
+              "price": "3.5",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "'THE BEST SNACK EVER'",
+              "desc": "layered coconut-ginger rice, black beans, melted Muenster & cilantro-lime salsa",
+              "price": "8",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "TROPICAL SALAD**",
+              "desc": "fresh romaine, avocado, mango, jicama, toasted macadamias, pepitas & sunflower seeds - dressed w/guava vinaigrette",
+              "price": "12.5",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "Add spiced & seared local, organic tofu",
+              "desc": "",
+              "price": "+2.5",
+              "price2": "",
+              "kind": "add"
+            },
+            {
+              "name": "'LIGHT BRIGHT SALAD'",
+              "desc": "romaine, tomato, Bermuda onions, avocado, Muenster, fresh lime & extra virgin olive oil w/cilantro-lime salsa",
+              "price": "6",
+              "price2": "9",
+              "kind": "item"
+            },
+            {
+              "name": "Add spiced & seared local, organic tofu",
+              "desc": "",
+              "price": "+2.5",
+              "price2": "",
+              "kind": "add"
+            }
+          ]
+        },
+        {
+          "kind": "items",
+          "number": "",
+          "title": "MORE FAVORITES!",
+          "columns": 1,
+          "boxed": false,
+          "items": [
+            {
+              "name": "FRITA BOWLS",
+              "desc": "available over coconut-ginger rice OR simple salad - all w/tropical slaw",
+              "price": "13",
+              "price2": "",
+              "kind": "item",
+              "nameSuffix": " - AROMATIC PULLED PORK | BLACK BEANS & SEARED TOFU | CHICKEN VERDE | VEGGIE PICADILLO"
+            },
+            {
+              "name": "'INSPIRED CUBAN'*",
+              "desc": "lemongrass roast pork, thick-cut bacon, tasso ham, Jarlsberg, cornichons & chipotle mayo on Cuban bread",
+              "price": "14",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "'INSPIRED CUBAN' COMBO*",
+              "desc": "Pick 2 of your scaled back favorites... 'Inspired Cuban' - 'Best Snack Ever' - 'Light Bright Salad'",
+              "price": "12.5",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "AROMATIC PULLED PORK ON BRIOCHE",
+              "desc": "w/sweet chile mayo and tropical slaw",
+              "price": "15",
+              "price2": "",
+              "kind": "item"
+            }
+          ]
+        },
+        {
+          "kind": "items",
+          "number": "",
+          "title": "SWEETS",
+          "columns": 2,
+          "boxed": false,
+          "items": [
+            {
+              "name": "CHURROS",
+              "desc": "scented w/nutmeg & orange zest, flash fried, rolled in cinnamon & sugar",
+              "price": "3/ea",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "MINI CHURROS",
+              "desc": "basket of 6 w/Chocolate Español",
+              "price": "1/ea",
+              "price2": "8",
+              "kind": "item"
+            },
+            {
+              "name": "CHURROS ESPAÑOL",
+              "desc": "3 Churros w/Chocolate Español for dunking! (Serves 3-4!)",
+              "price": "12",
+              "price2": "",
+              "kind": "item"
+            },
+            {
+              "name": "CINNAMON & SUGAR PLANTAINS",
+              "desc": "twice fried, rolled in cinnamon & sugar",
+              "price": "4",
+              "price2": "",
+              "kind": "item"
+            }
+          ]
+        }
+      ],
+      "disclaimer": "*Items contain under-cooked ingredients. Consuming raw or under-cooked meats, poultry, seafood, shellfish or eggs may increase your risk of food borne illness. We prepare our Beef Fritas a deep, rosy red Medium Rare unless requested otherwise!\n**Items contain nuts"
+    },
+    "bar": {
+      "title": "FRITA BAR",
+      "intro": "Don't see your favorite drink combination? Just ask and ingredients permitting, we will be happy to whip it up for you! P.S. Don't hesitate to bump up any drink to fishbowl size. You'll be saving the price of two drinks and making it a party at the same time!",
+      "subsections": [
+        {
+          "title": "MINIBAR SPECIALTIES",
+          "priceLine": "10-11/glass  32/fishbowl (serves 4-6!)",
+          "items": [
+            {
+              "name": "FRITA MOJITO",
+              "desc": "",
+              "price": "10"
+            },
+            {
+              "name": "FRITA MARGARITA",
+              "desc": "make it spicy! +1",
+              "price": "11"
+            },
+            {
+              "name": "GINGER-LIME TUMBLER",
+              "desc": "",
+              "price": "11"
+            },
+            {
+              "name": "FRITA SANGRIA",
+              "desc": "chilled or warmed, seasonal!",
+              "price": "10"
+            },
+            {
+              "name": "PISCO-HIBISCUS-LEMONADE",
+              "desc": "",
+              "price": "11"
+            },
+            {
+              "name": "FRITA COLADA",
+              "desc": "",
+              "price": "10"
+            },
+            {
+              "name": "FRITA SHAKEN DAIQUIRI",
+              "desc": "",
+              "price": "11"
+            }
+          ],
+          "footnote": "All available and delicious as Mocktails\nJust ask!"
+        },
+        {
+          "title": "BEER & MORE",
+          "priceLine": "6.5/ea  24/bucket (pick 5!)",
+          "items": [
+            {
+              "name": "MODELO ESPECIAL/NEGRA",
+              "desc": "",
+              "price": ""
+            },
+            {
+              "name": "DOS EQUIS",
+              "desc": "",
+              "price": ""
+            },
+            {
+              "name": "CERVEZA DELRAY",
+              "desc": "",
+              "price": ""
+            },
+            {
+              "name": "JAI ALAI",
+              "desc": "",
+              "price": ""
+            },
+            {
+              "name": "STELLA ARTOIS",
+              "desc": "also available non-alcoholic!",
+              "price": ""
+            },
+            {
+              "name": "BELL'S SEASONAL",
+              "desc": "",
+              "price": ""
+            },
+            {
+              "name": "SHORT'S SEASONAL",
+              "desc": "",
+              "price": ""
+            },
+            {
+              "name": "ATWATER'S SEASONAL",
+              "desc": "",
+              "price": ""
+            }
+          ],
+          "footnote": ""
+        }
+      ],
+      "happyHour": {
+        "title": "HAPPY HOUR!",
+        "schedule": "SUNDAY - THURSDAY 4-6PM",
+        "scheduleNote": "& last hour of service nightly / dine-in only please!",
+        "items": [
+          {
+            "name": "ANY BEER",
+            "desc": "",
+            "price": "1 off!"
+          },
+          {
+            "name": "BUCKET OF BEER (pick 5!)",
+            "desc": "",
+            "price": "22"
+          },
+          {
+            "name": "FRITA SHAKEN DAIQUIRI",
+            "desc": "",
+            "price": "5"
+          },
+          {
+            "name": "MINI 'BEST SNACK EVER'",
+            "desc": "",
+            "price": "4"
+          },
+          {
+            "name": "CHICKEN SALSA VERDE",
+            "desc": "- over coconut-ginger rice w/tropical slaw\n- on brioche w/tropical slaw",
+            "price": "6.5"
+          },
+          {
+            "name": "HAPPY HOUR FRIES",
+            "desc": "traditional shoestring or garlic-cilantro",
+            "price": "3.5"
+          }
+        ]
+      },
+      "beverages": {
+        "title": "OTHER BEVERAGES",
+        "groups": [
+          {
+            "title": "FRESH JUICES",
+            "items": [
+              {
+                "name": "FRESH GINGER-LIME JUICE",
+                "price": "5.5/ea"
+              },
+              {
+                "name": "FRESH SQUEEZED LEMONADE",
+                "price": "4.5/ea"
+              },
+              {
+                "name": "GINGER-LEMON-LIMEADE",
+                "price": "5/ea"
+              },
+              {
+                "name": "HIBISCUS LEMONADE",
+                "price": "4.5/ea"
+              },
+              {
+                "name": "FRESH SQUEEZED OJ",
+                "price": "MP"
+              }
+            ]
+          },
+          {
+            "title": "FRESH TROPICAL SODAS",
+            "items": [
+              {
+                "name": "COCONUT-LIME / HIBISCUS",
+                "price": "3.5"
+              }
+            ]
+          },
+          {
+            "title": "BOTTLED SPARKLING",
+            "items": [
+              {
+                "name": "COKE / SPRITE / TOPO CHICO / FANTA ORANGE",
+                "price": "4"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "landing": {
+    "backgroundImages": [
+      "/assets/landing/IMG_8534.jpg",
+      "/assets/landing/FRITA-SPACE2.jpg",
+      "/assets/landing/IMG_1497-1.jpg",
+      "/assets/landing/IMG_7968-3.jpg"
+    ],
+    "bannerRows": [
+      [
+        {
+          "text": "Gift cards for Frita Ann Arbor",
+          "linkText": "HERE!",
+          "url": "http://toasttab.com/fritabatidos/giftcards?utmCampaign=onlineOrdering"
+        },
+        {
+          "text": "Takeaway orders for Frita Ann Arbor",
+          "linkText": "HERE!",
+          "url": "https://fritabatidos.com/ann-arbor/650-2/"
+        },
+        {
+          "text": "Catering orders for Frita Ann Arbor",
+          "linkText": "HERE!",
+          "url": "https://www.toasttab.com/catering/fritabatidos"
+        }
+      ],
+      [
+        {
+          "text": "Gift cards for Frita Detroit",
+          "linkText": "HERE!",
+          "url": "https://www.toasttab.com/frita-batidos-detroit/giftcards?utm_source=undefined&utm_content=online--frita-batidos-detroit&utm_medium=toast_sites&utm_campaign=giftcards"
+        },
+        {
+          "text": "Takeaway orders for Frita Detroit",
+          "linkText": "HERE!",
+          "url": "http://toasttab.com/frita-batidos-detroit"
+        },
+        {
+          "text": "Catering orders for Frita Detroit",
+          "linkText": "HERE!",
+          "url": "https://www.toasttab.com/catering/frita-batidos-detroit"
+        }
+      ]
+    ],
+    "awards": "Best Burger Michigan Daily 2014-2025 • Metro Times Best Cuban Restaurant 2020-2024 • Best Speciality Burger Hour Magazine 2025 • Best New Burger NYC Frita Brooklyn The Lo Times • Best New Burger NYC The New York Times",
+    "locations": [
+      {
+        "label": "Ann Arbor",
+        "image": "/uploads/location-ann-arbor.png",
+        "url": "/ann-arbor"
+      },
+      {
+        "label": "Detroit",
+        "image": "/uploads/location-detroit.png",
+        "url": "http://fritabatidos.com/detroit"
+      },
+      {
+        "label": "Brooklyn",
+        "image": "/uploads/location-brooklyn.png",
+        "url": "https://fritabk.com/"
+      }
+    ]
+  }
+}

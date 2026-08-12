@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "port": 4173
+    },
+    {
+      "name": "burger-orders",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["/Users/zachbeeson/projects/burger-orders/server.js"],
+      "port": 4180
+    }
+  ]
+}

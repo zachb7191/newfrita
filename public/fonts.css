@@ -1,0 +1,30 @@
+/* Neutraface 2 Text — House Industries (licensed files self-hosted from /fonts/).
+   Book = 400, Bold = 700. Visitors who already have the font installed skip
+   the download via local(). Falls back to Jost (Google Fonts) while loading. */
+
+@font-face {
+  font-family: "Neutraface 2 Text";
+  src: local("Neutraface 2 Text Book"), local("Neutraface2Text-Book"),
+       url("/fonts/Neutraface2Text-Book.ttf") format("truetype");
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neutraface 2 Text";
+  src: local("Neutraface 2 Text Bold"), local("Neutraface2Text-Bold"),
+       url("/fonts/Neutraface2Text-Bold.otf") format("opentype");
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neutraface 2 Text";
+  src: local("Neutraface 2 Text Bold Italic"), local("Neutraface2Text-BoldItalic"),
+       url("/fonts/Neutraface2Text-BoldItalic.otf") format("opentype");
+  font-weight: 600 900;
+  font-style: italic;
+  font-display: swap;
+}

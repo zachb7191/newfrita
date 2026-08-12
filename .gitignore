@@ -1,0 +1,11 @@
+# Local Claude Code settings
+.claude/settings.local.json
+
+# gstack tooling logs
+.gstack/
+
+# Atomic-write temp file from server.js saveContent()
+content.json.tmp
+
+.DS_Store
+node_modules/
