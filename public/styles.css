@@ -163,10 +163,17 @@ img { max-width: 100%; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 26px;
   padding: 80px 24px 40px;
+  /* Auto margins centre the block when it fits and collapse when it doesn't,
+     so a long menu scrolls instead of having its ends clipped. */
+  justify-content: flex-start;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
+
+.mobile-menu > nav:first-of-type { margin-top: auto; }
+.mobile-menu > :last-child { margin-bottom: auto; }
 
 .mobile-menu[hidden] { display: none; }
 
@@ -330,6 +337,78 @@ body.home { background: transparent; }
 }
 
 .hero-nav a:hover { color: var(--blue-deep); text-decoration: underline; }
+
+/* ---- location switcher ---- */
+
+.loc-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.loc-switch a {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.16s, color 0.16s;
+}
+
+/* On the hero it floats over a photo, so it needs its own surface. */
+.loc-switch-hero {
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 18px rgba(30, 45, 55, 0.12);
+}
+
+.loc-switch-hero a { color: var(--ink); }
+.loc-switch-hero a:hover { background: rgba(41, 184, 229, 0.14); color: var(--blue-deep); }
+.loc-switch-hero a.active { background: var(--blue); color: #fff; font-weight: 700; }
+
+.loc-switch-drawer {
+  margin-top: 4px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(30, 45, 55, 0.1);
+  width: min(360px, 84vw);
+}
+
+/* Outranks `.mobile-menu nav` / `.mobile-menu nav a`, which would otherwise
+   catch these — the switcher is a <nav> too, and those rules lay it out as a
+   single 21px-tall column instead of a compact row of pills. */
+.mobile-menu .loc-switch-drawer {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+.mobile-menu .loc-switch-drawer a {
+  color: var(--gray-text);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  padding: 8px 14px;
+}
+
+.mobile-menu .loc-switch-drawer a:hover { color: var(--blue-deep); background: var(--blue-soft); }
+
+.mobile-menu .loc-switch-drawer a.active {
+  background: var(--blue-soft);
+  color: var(--blue-deep);
+  font-weight: 700;
+}
+
+.loc-switch-footer { margin-bottom: 10px; }
+.loc-switch-footer a { color: var(--gray-text); font-size: 13px; padding: 7px 14px; }
+.loc-switch-footer a:hover { color: var(--blue-deep); background: var(--blue-soft); }
+.loc-switch-footer a.active { color: var(--blue-deep); font-weight: 700; }
 
 /* The location page carries the header only so it can hand the nav over to
    the drawer on small screens — on desktop the inline row above does the job. */
@@ -979,6 +1058,11 @@ body.photos-bg .page-main { min-height: calc(100vh - 80px); }
      width, so the location page hands the nav to the drawer instead. */
   body.location .site-header { display: block; }
   .hero-nav { display: none; }
+
+  /* The switcher stays on the hero even though the nav went into the drawer:
+     it doubles as the "which location am I on" cue. */
+  .loc-switch-hero a { padding: 8px 12px; font-size: 12.5px; }
+  .loc-switch-footer a { font-size: 12.5px; }
 
   /* Column layout so the hero absorbs whatever height the banner and header
      leave behind, rather than guessing with a fixed calc. */
