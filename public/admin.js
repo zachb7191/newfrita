@@ -52,15 +52,70 @@ const ICONS = {
 
 // ---------- path helpers ----------
 
+// Pages, menus and site settings are shared by default and can be overridden
+// per location. Panels keep writing plain paths like `pages.contact.hours`;
+// this rewrites them to the active location's own copy when it has one, so
+// every field, list and image picker is location-aware for free.
+const SCOPABLE = { pages: true, menus: true, site: true };
+
+function scopedPath(path) {
+  const parts = path.split('.');
+  if (!SCOPABLE[parts[0]]) return path;
+  const loc = (state.locations || [])[activeLocation];
+  if (!loc) return path;
+  const overridden = parts[0] === 'site' ? !!loc.site : !!(loc[parts[0]] && loc[parts[0]][parts[1]]);
+  return overridden ? `locations.${activeLocation}.${path}` : path;
+}
+
 function get(path) {
-  return path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), state);
+  return scopedPath(path).split('.').reduce((o, k) => (o == null ? undefined : o[k]), state);
 }
 
 function set(path, value) {
-  const keys = path.split('.');
+  const keys = scopedPath(path).split('.');
   const last = keys.pop();
   const target = keys.reduce((o, k) => o[k], state);
   target[last] = value;
+  markDirty();
+}
+
+// ---------- shared vs. per-location scope ----------
+
+function isOverridden(scope) {
+  const loc = (state.locations || [])[activeLocation];
+  if (!loc) return false;
+  const parts = scope.split('.');
+  return parts[0] === 'site' ? !!loc.site : !!(loc[parts[0]] && loc[parts[0]][parts[1]]);
+}
+
+function clone(v) {
+  return JSON.parse(JSON.stringify(v === undefined ? null : v));
+}
+
+// Copy the shared version into this location so it can drift independently.
+function customizeScope(scope) {
+  const loc = (state.locations || [])[activeLocation];
+  if (!loc || isOverridden(scope)) return;
+  const parts = scope.split('.');
+  const shared = parts.reduce((o, k) => (o == null ? undefined : o[k]), state);
+  if (parts[0] === 'site') loc.site = clone(shared);
+  else {
+    loc[parts[0]] = loc[parts[0]] || {};
+    loc[parts[0]][parts[1]] = clone(shared);
+  }
+  markDirty();
+}
+
+// Drop this location's copy and fall back to the shared one.
+function revertScope(scope) {
+  const loc = (state.locations || [])[activeLocation];
+  if (!loc || !isOverridden(scope)) return;
+  const parts = scope.split('.');
+  if (parts[0] === 'site') delete loc.site;
+  else {
+    delete loc[parts[0]][parts[1]];
+    if (!Object.keys(loc[parts[0]]).length) delete loc[parts[0]];
+  }
   markDirty();
 }
 
@@ -468,8 +523,9 @@ function foodSectionFields(prefix, sec) {
 
 // ---------- panels ----------
 
-// The row of tabs at the top of the Locations panel.
-function locationSwitcher() {
+// The row of tabs at the top of the Locations panel, and above every page
+// panel so you always know which location you are editing.
+function locationSwitcher(opts = {}) {
   const locs = state.locations || [];
   const tabs = locs.map((l, i) =>
     el(
@@ -488,6 +544,7 @@ function locationSwitcher() {
       [l.label || `Location ${i + 1}`]
     )
   );
+  if (opts.allowAdd === false) return el('div', { class: 'loc-switch' }, tabs);
   tabs.push(
     el(
       'button',
@@ -549,6 +606,41 @@ function currentLocation() {
   if (!locs.length) return null;
   activeLocation = Math.min(activeLocation, locs.length - 1);
   return locs[activeLocation];
+}
+
+// Sits above every page panel: which location you're editing, and whether
+// this page is the shared one or that location's own copy.
+function scopeBar(scope) {
+  const loc = currentLocation();
+  if (!loc) return null;
+  const locs = state.locations || [];
+  const custom = isOverridden(scope);
+  const status = el('div', { class: 'scope-status' + (custom ? ' custom' : '') }, [
+    el('span', { class: 'scope-dot' }),
+    el('span', { class: 'scope-text' }, [
+      custom
+        ? `Customized for ${loc.label} — editing here changes only this location.`
+        : `Shared by all ${locs.length} locations — editing here changes every one of them.`,
+    ]),
+    el(
+      'button',
+      {
+        type: 'button',
+        class: 'scope-btn',
+        onclick: () => {
+          if (custom) {
+            if (!confirm(`Discard ${loc.label}'s own version and go back to the shared one?`)) return;
+            revertScope(scope);
+          } else {
+            customizeScope(scope);
+          }
+          renderPanel();
+        },
+      },
+      [custom ? 'Use shared version' : `Customize for ${loc.label}`]
+    ),
+  ]);
+  return el('div', { class: 'scope' }, [locationSwitcher({ allowAdd: false }), status]);
 }
 
 const PANELS = [
@@ -614,6 +706,7 @@ const PANELS = [
     title: 'Site Settings',
     desc: 'Name, tagline and the social links in the footer',
     icon: 'settings',
+    scope: 'site',
     preview: '/',
     render: () => [
       el('div', { class: 'grid-2' }, [
@@ -666,7 +759,8 @@ const PANELS = [
     title: 'Food & Drinks',
     desc: 'The order link, intro, and the two menus on this page',
     icon: 'utensils',
-    preview: '/food',
+    scope: 'pages.food',
+    page: 'food',
     render: () => [
       el('div', { class: 'grid-2' }, [
         fText('Order link text', 'pages.food.orderText'),
@@ -683,7 +777,8 @@ const PANELS = [
     title: 'Menu Guide',
     desc: 'The dietary guide — vegetarian, vegan, gluten free…',
     icon: 'book',
-    preview: '/menu-guide',
+    scope: 'pages.menuGuide',
+    page: 'menu-guide',
     render: () => [
       fText('Title', 'pages.menuGuide.title'),
       fTextarea('Intro', 'pages.menuGuide.intro', 4),
@@ -707,7 +802,8 @@ const PANELS = [
     title: 'Catering',
     desc: 'The catering link and menu images',
     icon: 'package',
-    preview: '/catering',
+    scope: 'pages.catering',
+    page: 'catering',
     render: () => [
       el('div', { class: 'grid-2' }, [
         fText('Link text', 'pages.catering.linkText'),
@@ -722,7 +818,8 @@ const PANELS = [
     title: 'Chef',
     desc: 'Eve’s story — background, style, influences…',
     icon: 'chef',
-    preview: '/chef',
+    scope: 'pages.chef',
+    page: 'chef',
     render: () => [
       fList('pages.chef.sections', {
         itemTitle: (s) => s.heading || '(no heading)',
@@ -740,7 +837,8 @@ const PANELS = [
     title: 'Philosophy',
     desc: 'The philosophy page text',
     icon: 'heart',
-    preview: '/philosophy',
+    scope: 'pages.philosophy',
+    page: 'philosophy',
     render: () => [
       fList('pages.philosophy.sections', {
         itemTitle: (s) => (s.body || 'Section').slice(0, 52) + ((s.body || '').length > 52 ? '…' : ''),
@@ -758,7 +856,8 @@ const PANELS = [
     title: 'Photos',
     desc: 'The full-page photo background that fades between shots',
     icon: 'image',
-    preview: '/photos',
+    scope: 'pages.photos',
+    page: 'photos',
     render: () => [
       fNumber('Milliseconds each photo shows before fading to the next', 'pages.photos.intervalMs', '6000 = 6 seconds. The fade itself is slow and automatic.'),
       subtitle('Photos (fade in this order)'),
@@ -770,7 +869,8 @@ const PANELS = [
     title: 'Press / Praise',
     desc: 'The stacked press images',
     icon: 'star',
-    preview: '/praise',
+    scope: 'pages.praise',
+    page: 'praise',
     render: () => [
       fImageList('pages.praise.images', 'Add image'),
     ],
@@ -780,7 +880,8 @@ const PANELS = [
     title: 'Contact',
     desc: 'Hours, holiday notices, address and links',
     icon: 'phone',
-    preview: '/contact',
+    scope: 'pages.contact',
+    page: 'contact',
     render: () => [
       fTextarea('Notice above hours', 'pages.contact.notice', 2, 'Holiday hours etc. Leave blank to hide.'),
       subtitle('Hours'),
@@ -809,7 +910,8 @@ const PANELS = [
     title: 'Frita Gear',
     desc: 'The big button and where it goes',
     icon: 'shirt',
-    preview: '/frita-gear',
+    scope: 'pages.fritaGear',
+    page: 'frita-gear',
     render: () => [
       el('div', { class: 'grid-2' }, [
         fText('Button text', 'pages.fritaGear.buttonText'),
@@ -823,7 +925,8 @@ const PANELS = [
     title: 'Food Menu',
     desc: 'Every section and item on the food menu',
     icon: 'clipboard',
-    preview: '/food',
+    scope: 'menus.food',
+    page: 'food',
     render: () => [
       backLink('food-page', 'Shown on the Food & Drinks page'),
       fList('menus.food.sections', {
@@ -841,7 +944,8 @@ const PANELS = [
     title: 'Bar Menu',
     desc: 'Frita Bar, happy hour and other beverages',
     icon: 'martini',
-    preview: '/food',
+    scope: 'menus.bar',
+    page: 'food',
     render: () => [
       backLink('food-page', 'Shown on the Food & Drinks page'),
       fText('Bar title', 'menus.bar.title'),
@@ -947,9 +1051,13 @@ function closeDrawer() {
 // ---------- panel rendering ----------
 
 // A panel's `preview` may be a path or a function, so it can follow the
-// location being edited.
+// location being edited. Scoped panels preview that location's copy of the page.
 function panelPreview(panel) {
   if (!panel) return '/';
+  if (panel.page) {
+    const loc = currentLocation();
+    if (loc) return `/${loc.slug}/${panel.page}`;
+  }
   return (typeof panel.preview === 'function' ? panel.preview() : panel.preview) || '/';
 }
 
@@ -961,7 +1069,12 @@ function renderPanel() {
   $('#preview-link').href = panelPreview(panel);
   const body = $('#panel-body');
   body.innerHTML = '';
-  for (const node of panel.render()) body.appendChild(node);
+  // Scoped panels always lead with the location switcher + shared/custom state.
+  if (panel.scope) {
+    const bar = scopeBar(panel.scope);
+    if (bar) body.appendChild(bar);
+  }
+  for (const node of panel.render()) if (node) body.appendChild(node);
   syncPreviewSrc();
 }
 

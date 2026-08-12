@@ -131,14 +131,28 @@ const server = http.createServer(async (req, res) => {
       if (p === '/') {
         return send(res, 200, render.landing(content), { 'Content-Type': 'text/html; charset=utf-8' });
       }
-      const slug = p.slice(1);
-      const loc = (content.locations || []).find((l) => l.slug === slug);
-      if (loc) {
-        return send(res, 200, render.location(content, loc), { 'Content-Type': 'text/html; charset=utf-8' });
+      const html = { 'Content-Type': 'text/html; charset=utf-8' };
+      const parts = p.slice(1).split('/');
+      const findLoc = (s) => (content.locations || []).find((l) => l.slug === s);
+
+      // /ann-arbor — a location's front page
+      if (parts.length === 1) {
+        const loc = findLoc(parts[0]);
+        if (loc) return send(res, 200, render.location(content, loc), html);
+        // /contact — a bare page URL, so send it to the canonical location
+        if (PAGE_SLUGS.includes(parts[0])) {
+          return send(res, 302, '', { Location: `/${render.homeSlug(content)}/${parts[0]}` });
+        }
       }
-      if (PAGE_SLUGS.includes(slug)) {
-        return send(res, 200, render.page(content, slug), { 'Content-Type': 'text/html; charset=utf-8' });
+
+      // /dallas/contact — an interior page in that location's context
+      if (parts.length === 2) {
+        const loc = findLoc(parts[0]);
+        if (loc && PAGE_SLUGS.includes(parts[1])) {
+          return send(res, 200, render.page(content, loc, parts[1]), html);
+        }
       }
+
       return serveStatic(res, p);
     }
 

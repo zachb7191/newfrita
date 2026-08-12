@@ -296,6 +296,59 @@ button { font-family: inherit; }
 
 .loc-tab.loc-add { flex: 0 0 auto; color: var(--blue-deep); }
 
+/* shared vs. per-location scope bar above each page panel */
+
+.scope { margin-bottom: 26px; }
+
+.scope .loc-switch { margin-bottom: 10px; }
+
+.scope-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--field-bg);
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.scope-dot {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.scope-status.custom { background: var(--blue-soft); border-color: #bfe9f8; color: var(--blue-deep); }
+.scope-status.custom .scope-dot { background: var(--blue); }
+
+.scope-text { flex: 1; min-width: 0; line-height: 1.5; }
+
+.scope-btn {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.scope-btn:hover { border-color: var(--blue); color: var(--blue-deep); }
+
+@media (max-width: 620px) {
+  .scope-status { flex-wrap: wrap; }
+  .scope-btn { width: 100%; }
+}
+
 .loc-danger { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line); }
 
 .loc-remove {
