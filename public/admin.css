@@ -925,3 +925,23 @@ button { font-family: inherit; }
 @media (min-width: 1024px) {
   .scrim { display: none; }
 }
+
+/* ==================== touch sizing ====================
+   Last in the file on purpose: several of these selectors tie on specificity
+   with the base rules above, so source order is what makes them win. */
+
+@media (hover: none), (max-width: 720px) {
+  .icon-btn { width: 40px; height: 40px; }
+  .card-tools { gap: 4px; }
+  .card-tools .icon-btn { width: 38px; height: 38px; }
+  .card-tools .icon-btn svg { width: 17px; height: 17px; }
+  .ghost-btn, .upload-btn { min-height: 40px; }
+  #panel-nav a { padding: 12px 10px; }
+  .sidebar-foot a { min-height: 44px; }
+  .loc-tab { min-height: 44px; }
+
+  .img-actions { padding: 6px; }
+  .img-actions .icon-btn { width: 38px; height: 38px; }
+  .img-actions .icon-btn svg { width: 16px; height: 16px; }
+  .img-url-row input { min-height: 38px; font-size: 12.5px; }
+}

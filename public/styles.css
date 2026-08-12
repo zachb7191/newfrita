@@ -151,10 +151,12 @@ img { max-width: 100%; }
 .menu-toggle.open span:nth-child(2) { opacity: 0; }
 .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Above the header (40), otherwise the opaque bar paints over the top of the
+   list — visible on location pages, where the bar sits below the banner. */
 .mobile-menu {
   position: fixed;
   inset: 0;
-  z-index: 35;
+  z-index: 45;
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -187,6 +189,30 @@ img { max-width: 100%; }
 
 .mobile-menu nav a.active { color: var(--blue-deep); font-weight: 700; }
 .mobile-menu nav a:hover { color: var(--blue-deep); }
+
+.menu-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.menu-close svg { width: 24px; height: 24px; }
+
+@supports (padding: max(0px)) {
+  .menu-close {
+    top: max(12px, env(safe-area-inset-top));
+    right: max(18px, env(safe-area-inset-right));
+  }
+}
 
 body.menu-open { overflow: hidden; }
 
@@ -244,9 +270,21 @@ body.landing { background: transparent; }
   .location-card img { width: clamp(200px, 30vw, 300px); }
 }
 
+/* Two lockups per row rather than one tall column — the whole selector stays
+   scannable without a long scroll as locations are added. */
 @media (max-width: 700px) {
-  .locations { flex-direction: column; gap: 34px; }
-  .location-card img { width: min(300px, 74vw); }
+  .locations {
+    min-height: 0;
+    gap: 14px 10px;
+    padding: 24px 14px 40px;
+    align-content: center;
+  }
+  .location-card { flex: 0 0 calc(50% - 5px); display: flex; justify-content: center; }
+  .location-card img { width: 100%; max-width: 210px; }
+}
+
+@media (max-width: 380px) {
+  .location-card img { max-width: 168px; }
 }
 
 /* ================= Location front page ================= */
@@ -292,6 +330,10 @@ body.home { background: transparent; }
 }
 
 .hero-nav a:hover { color: var(--blue-deep); text-decoration: underline; }
+
+/* The location page carries the header only so it can hand the nav over to
+   the drawer on small screens — on desktop the inline row above does the job. */
+body.location .site-header { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .bg-layer { transition: none; }
@@ -925,15 +967,61 @@ body.photos-bg .page-main { min-height: calc(100vh - 80px); }
 
 .gear-button:hover { background: var(--blue-deep); transform: translateY(-2px); }
 
-/* ================= Responsive header ================= */
+/* ================= Responsive ================= */
 
 @media (max-width: 900px) {
   .header-inner { height: 54px; padding: 0 16px; }
   .announcement-item { white-space: normal; margin: 0 4px; }
-  .announcement-awards { display: none; }
-  .hero { gap: 26px; }
   .page-main { padding: 30px 16px 70px; }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 30px 20px; padding: 40px 22px 30px; }
+
+  /* Nine nav links wrap into an unreadable block over the photo at this
+     width, so the location page hands the nav to the drawer instead. */
+  body.location .site-header { display: block; }
+  .hero-nav { display: none; }
+
+  /* Column layout so the hero absorbs whatever height the banner and header
+     leave behind, rather than guessing with a fixed calc. */
+  body.home { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+  .hero { flex: 1 1 auto; min-height: 0; gap: 22px; padding: 34px 22px 60px; }
+
+  /* Small but still legible, rather than hidden as it used to be. */
+  .announcement-awards { font-size: 10.5px; line-height: 1.5; opacity: 0.92; }
+  .announcement { padding: 11px 16px 10px; }
+  .announcement-links { font-size: 13px; }
+  .landing-announcement { padding: 12px 14px 10px; }
+  .landing-announcement .announcement-links { margin-bottom: 2px; }
+}
+
+/* ---- touch targets: 44px minimum on touch screens ---- */
+
+@media (hover: none), (max-width: 900px) {
+  .menu-toggle { width: 44px; height: 44px; padding: 11px; }
+
+  .footer-nav a,
+  .footer-order a,
+  .contact-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer-bottom a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; }
+  .contact-address a { display: inline-block; padding: 8px 0; }
+
+  /* These sit inline inside a sentence, one per line. Full 44px height would
+     add ~66px to an already tall banner, so they get a roomy 36px instead. */
+  .announcement-links a { display: inline-block; padding: 8px 6px; }
+
+  a, button { -webkit-tap-highlight-color: rgba(41, 184, 229, 0.18); }
 }
 
 @media (max-width: 520px) {
@@ -941,4 +1029,17 @@ body.photos-bg .page-main { min-height: calc(100vh - 80px); }
   .footer-nav { align-items: center; }
   .footer-social { justify-content: center; }
   .footer-brand img { margin: 0 auto; display: block; }
+  .hero-logo { width: min(420px, 88vw); }
+  .page-title { letter-spacing: 0.1em; }
+}
+
+/* Keep content clear of the notch / home indicator on modern phones. */
+@supports (padding: max(0px)) {
+  @media (max-width: 900px) {
+    .announcement { padding-top: max(11px, env(safe-area-inset-top)); }
+    .header-inner { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+    .page-main, .hero { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+    .site-footer { padding-bottom: env(safe-area-inset-bottom); }
+    .mobile-menu { padding-bottom: max(40px, env(safe-area-inset-bottom)); }
+  }
 }
